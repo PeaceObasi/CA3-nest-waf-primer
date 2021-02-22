@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Body, Put, Param, Delete, Render } from '@nestjs/common';
+import { CitizenRegistrationModule } from '../citizen-registration.module';
 import { CitizensService } from './citizens.service';
 import { CreateCitizenDto } from './dto/create-citizen.dto';
 import { UpdateCitizenDto } from './dto/update-citizen.dto';
@@ -20,6 +21,16 @@ export class CitizensController {
   getHome(): {} {
     return this.citizensService.getHome();
   }
+  
+  @Get('/')
+  @Render ('citizen/list.html')
+  async getRegistered() {
+    //console.log(this.citizensService.findAll())
+    const citizens = await this.citizensService.findAll();
+    console.log(JSON.stringify(citizens))
+    return {citizens: citizens, title: "Registered Citizens"};
+  }
+
 
   
 

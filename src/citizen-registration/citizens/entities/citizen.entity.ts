@@ -12,7 +12,7 @@ export class Citizen {
     @Column({ nullable: true })
     middleName: string;
 
-    @Column()
+    @Column({ nullable: true })
     lastName: string;
 
     @Column({ nullable: false })

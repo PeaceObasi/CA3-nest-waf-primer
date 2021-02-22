@@ -29,6 +29,9 @@ constructor(
     return {title: 'Register'}
   }
 
+  getRegistered(): {} {
+    return {title: 'Registered Citizens'}
+  }
   async create(createCitizenDto: CreateCitizenDto) {
     const newCitizen: Citizen = this.citizensRepository.create(createCitizenDto)
     return await this.citizensRepository.save(newCitizen);
